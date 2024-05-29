@@ -1,0 +1,7 @@
+16*8*5*8*73
+88*102
+Nie mozna zaszyfrowac podanego tekstu
+102*16
+16*8*5*8*73**88*102
+Nie mozna zaszyfrowac podanego tekstu
+84**27

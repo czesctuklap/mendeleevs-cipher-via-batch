@@ -1,0 +1,39 @@
+/* Ogólny styl dla całej strony */
+body {
+    font-family: 'Arial', sans-serif; /* Ustawienie czcionki dla tekstu */
+    margin: 20px; /* Margines dla odstępu od krawędzi strony */
+}
+
+/* Styl dla nagłówka pierwszego poziomu */
+h1 {
+    text-align: center; /* Wyśrodkowanie tekstu w nagłówku h1 */
+}
+
+/* Styl dla tabeli */
+table {
+    width: 100%; /* Szerokość tabeli na 100% szerokości kontenera */
+    border-collapse: collapse; /* Zmniejszenie odstępów między komórkami tabeli */
+    margin-top: 20px; /* Margines na górze tabeli */
+}
+
+/* Styl dla komórek nagłówków i treści tabeli */
+th, td {
+    border: 1px solid #ddd; /* Ramka 1 piksela, szarość #ddd */
+    padding: 8px; /* Wewnętrzny odstęp w komórkach */
+    text-align: left; /* Tekst w komórkach wyrównany do lewej */
+}
+
+/* Styl dla komórek nagłówków */
+th {
+    background-color: #dce0e6; /* Tło nagłówków w kolorze #dce0e6 */
+}
+
+/* Efekt podświetlenia wiersza przy najechaniu myszką */
+tr:hover {
+    background-color: #dce0e679; /* Kolor tła wiersza po najechaniu myszką */
+}
+
+/* Styl dla sekcji z datą i godziną */
+.datetime {
+    text-align: center; /* Wyśrodkowanie tekstu w sekcji daty i godziny */
+}

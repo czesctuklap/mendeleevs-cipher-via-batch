@@ -1,0 +1,606 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[]{algorithm2e}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\usepackage{color}
+\usepackage{listings}
+
+\lstloadlanguages{% Check Dokumentation for further languages ...
+	HTML,
+	Java,
+        python
+}
+
+\lstdefinelanguage{batch}{
+  morekeywords={@echo, echo, pause, menu, set, if, call run_project, else if, else, show_info, exit, goto, off, run_project, setlocal, enabledelayedexpansion, run_project_menu, type, backing_up, endlocal, start},
+  sensitive=false,
+  morecomment=[l]{REM},
+}
+
+\lstdefinestyle{batch}{
+  language=batch,
+  basicstyle=\small\ttfamily,
+  commentstyle=\color{green!40!black},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{black},
+  numbers=left,
+  stepnumber=1,
+  numbersep=5pt,
+  backgroundcolor=\color{white},
+  frame=none,
+  rulecolor=\color{black},
+  tabsize=2,
+  captionpos=b,
+  breaklines=true,
+  showspaces=false,
+  showstringspaces=false,
+}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{black}\bfseries,
+  identifierstyle=\color{red},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinestyle{JavaScript}{
+  language=JavaScript,
+  basicstyle=\small\ttfamily,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  backgroundcolor=\color{white},
+  showspaces=false,
+  showstringspaces=false,
+  tabsize=2,
+  breaklines=true,
+  captionpos=b,
+  frame=none,
+}
+
+\lstdefinelanguage{CSS}{
+  keywords={color, background, font-size, margin, padding, border, display, width, height, position, top, left, right, bottom, text, align, body, font, family, h1, table, collapse, margin-top, th, td, tr, hover, datetime},
+  sensitive=true,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]://,
+  morestring=[b]',
+  morestring=[b]",
+}
+
+\lstdefinestyle{CSS}{
+  language=CSS,
+  basicstyle=\small\ttfamily,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  backgroundcolor=\color{white},
+  showspaces=false,
+  showstringspaces=false,
+  tabsize=2,
+  breaklines=true,
+  captionpos=b,
+  frame=none,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{green!40!black}\itshape,
+  stringstyle=\color{red}\ttfamily,
+}
+
+
+\definecolor{red}{rgb}{0.6,0,0} % for strings
+\definecolor{blue}{rgb}{0,0,0.6}
+\definecolor{green}{rgb}{0,0.8,0}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+	language=csh,
+	basicstyle=\footnotesize\ttfamily,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	tabsize=2,
+	extendedchars=true,
+	breaklines=true,
+	frame=b,
+	stringstyle=\color{blue}\ttfamily,
+	showspaces=false,
+	showtabs=false,
+	xleftmargin=17pt,
+	framexleftmargin=17pt,
+	framexrightmargin=5pt,
+	framexbottommargin=4pt,
+	commentstyle=\color{green},
+	morecomment=[l]{//}, %use comment-line-style!
+	morecomment=[s]{/*}{*/}, %for multiline comments
+	showstringspaces=false,
+	morekeywords={ abstract, event, new, struct,
+		as, explicit, null, switch,
+		base, extern, object, this,
+		bool, false, operator, throw,
+		break, finally, out, true,
+		byte, fixed, override, try,
+		case, float, params, typeof,
+		catch, for, private, uint,
+		char, foreach, protected, ulong,
+		checked, goto, public, unchecked,
+		class, if, readonly, unsafe,
+		const, implicit, ref, ushort,
+		continue, in, return, using,
+		decimal, int, sbyte, virtual,
+		default, interface, sealed, volatile,
+		delegate, internal, short, void,
+		do, is, sizeof, while,
+		double, lock, stackalloc,
+		else, long, static,
+		enum, namespace, string},
+	keywordstyle=\color{cyan},
+	identifierstyle=\color{red},
+}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{blue}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+
+
+
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\marginparwidth}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\voffset}{-1cm}
+\addtolength{\textheight}{2.5cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+
+\begin{document}
+	
+        \title{Języki Skryptowe\\\small{Dokumentacja Projektu Szyfr Mendelejewa}}
+        \author{Zuzanna Kłap, grupa 1/1\\Wydział Matematyki Stosowanej - Informatyka\\I semestr III}
+        \date{\today}
+
+
+	\maketitle
+        \newpage
+	\section*{Część I}
+	\subsection*{Opis programu}
+	\hspace{0.5cm} Algorytmion - edycja 2020 zadanie 3 
+        
+        Zadane było napisać program, który będzie szyfrował podany tekst w taki sposób, że zamiast kolejnych liter program będzie wypisywał liczbę atomową pierwiastka, którego symbolem chemicznym są szyfrowane litery bez uwzględnienia ich wielkości. Odstęp między literami zastępować miał symbol gwiazdki *, a odstęp między wyrazami - dwie gwiazdki **. 
+
+        Niektóre teksty mogą być zaszyfrowane w ten sposób na różne sposoby,
+        np. wyraz nos zaszyfrowany może być na 7*8*16 (azot, tlen, siarka), 102*16 (nobel, siarka) lub 7*76 (azot, osm). Program miał zwracać jedną z możliwości.
+
+        Niektóre teksty nie mogą być zaszyfrowane w ten sposób, przykładem
+        takiego wyrazu może być algorytmion. W takim wypadku program miał wypisać stosowny komunikat.
+
+
+        
+	\subsection*{Instrukcja obsługi}
+        \hspace{0.5cm} Program jest aplikacją konsolową.
+
+        Po jego uruchomieniu użytkownik jest proszony o wybór jednej z 3 opcji, poprzez wpisanie odpowiedniej cyfry i potwierdzenie klawiszem ENTER:
+
+        1 - Uruchom projekt - Rozpoczyna się szyfrowanie danych które zostały wpisane do pliku input.txt i zostają one zapisane do pliku output.txt oraz jak backup. Następnie użytkownik proszony jest o wybranie, w jaki sposób chce on wyświetlić zaszyfrowane dane; jako wypis w konsoli, czy jako plik HTML.
+
+        2 - Informacje i instrukcja obsługi - Użytkownik zostanie przekierowany do rozpisanej instrukcji i zasad dotyczących wpisywania danych. Program wypisuje też, w jaki sposób wyraz zostanie zaszyfrowany.
+
+        3 - Zakończ - Opcja wyłącza program.
+	
+
+
+        \newpage
+	\section*{Część II}
+	\subsection*{Algorytmy}
+	\hspace{0.5cm} Program pobiera dane z pliku wejściowego               input.txt oraz zapisuje je do pliku output.txt.
+ 
+         Została zastosowana pętla while, przechodząca od indeksu 0      do takiego, który przyjmuje wartość długości wpisywanego przez użytkownika tekstu. Następnie użyte zostały instrukcje if, elif oraz else, które w połączeniu z pętlami for analizują wejściowy tekst oraz podejmują odpowiednie kroki z zaszyfrowaniem tekstu lub wyrzuceniem wyjątku w przypadku, gdy jest to niemożliwe.
+
+        Dodatkowo utworzona została funkcja sprawdzająca, czy dany tekst można zaszyfrować, która wykorzystuje instrukcje try oraz except i wypisuje odpowiadające im rozwiązania.\\
+        \\
+        \begin{algorithm}[H]
+            \KwData{Tekst wejściowy $text$}
+            
+            \SetKwFunction{CheckFunction}{check}
+            \SetKwProg{Fn}{Function}{:}{}
+            \Fn{\CheckFunction{$text$}}{
+                \textbf{try} \{
+                    $output \leftarrow$ \texttt{mendeleev\_cipher($text$)}\;
+                    \texttt{Wydrukuj("Zaszyfrowany tekst:", $output$)}\;
+                \} \textbf{except} Exception as e \{
+                    \texttt{Wydrukuj("Nie można zaszyfrować podanego tekstu")}\;
+                \}
+            }
+            \caption{Algorytm sprawdzający możliwość zaszyfrowania tekstu}
+        \end{algorithm}
+        
+	\begin{algorithm}[H]
+            \KwData{Dane wejściowe tekst $input\_text$}
+            \KwResult{Tekst $output$ }
+    
+            $i=0$
+        
+            \While{$i < \text{len}(sentence)$}{
+                \If{$\text{isalpha}(sentence[i])$}{
+                    $Utworzenie pustej pary$\;
+                    \If{$i + 1 < \text{len}(sentence)$}{
+                        Przyspisanie parze wartości $sentence[i] + sentence[i + 1]$\;
+                    }
+        
+                    \If{$pair$ jest w $elements$}{
+                        Dodaj $elements[pair]$ do $ciphered$\;
+        
+                        \If{$i + 2 = \text{len}(sentence)$}{
+                            \textbf{break}\;
+                        } \Else{
+                            Dodaj gwiazdkę do $ciphered$\;
+                            Iteracja $i$\;
+                        }
+                    } \Else{
+                        \If{$sentence[i]$ jest w $elements$}{
+                            Dodaj $elements[sentence[i]]$ do $ciphered$\;
+        
+                            \If{$i + 1 = \text{len}(sentence)$}{
+                                \textbf{break}\;
+                            } \Else{
+                                Dodaj gwiazdkę do $ciphered$\;
+                            }
+                        } \Else{
+                            \textbf{raise Exception()}\;
+                        }
+                    }
+                } \ElseIf{$sentence[i]$ to spacja}{
+                    Dodaj gwiazdkę do $ciphered$\;
+                } \Else{
+                    Wydrukuj "Wprowadzono nieobsługiwane znaki"\;
+                    \textbf{raise Exception()}\;
+                }
+        
+                Iteracja $i$\;
+            }
+    
+            \ForEach{$element$ \textbf{in} $ciphered$}{
+                Dodanie $element$ do $output$\;
+            }
+        
+            \Return $output$\;
+            \caption{Algorytm szyfrowania Mendelejewa}
+        \end{algorithm}
+
+        \subsection*{Implementacja systemu}
+	\hspace{0.5cm} Uruchomienie skryptu projekt.bat skutkuje             pojawieniem się menu głównego na ekranie.
+
+        Po jego uruchomieniu użytkownik zostanie powitany, a następnie zostanie mu przedstawiony wybór akcji, które może podjąć;
+        
+        1 - Uruchom projekt,
+        
+        2 - Informacje i instrukcja obsługi,
+        
+        3 - Zakończ.
+        
+        Po wybraniu pierwszej opcji program zapyta się gdzie użytkownik chce wyświetlić wynik szyfrowania oraz wyświetli 2 opcje:
+
+        1 - W konsoli,
+
+        2 - W pliku HTML.
+
+        Jeśli użytkownik wybierze opcję konsolową na ekranie zostanie wyświetlona informacja o wypisie danych z pliku output.txt, do którego to program zapisuje zaszyfrowane dane. Jeśli natomiast wybrana zostanie opcja druga, program przekieruje nas na stronę, w której do wglądu będziemy mieli pełny raport z szyfrowania.
+
+        Użytkownik może też wybrać przeczytanie informacji i instrukcji obsługi. W takim przypadku zostanie wypisany komunikat "Podaj tekst, który chcesz zaszyfrować zgodnie z szyfrem Mendelejewa - zamiast kolejnych liter, wypisywane są liczby atomowe pierwiastka, odstęp między literami zastępuje symbol gwiazdki *, a odstęp między wyrazami dwie gwiazdki **. Zaszyfrowane nie mogą zostać znaki specjalne typu !,*,hashtag ani liczby, ponieważ mogłoby to wprowadzić błędy związane z odczytem zaszyfrowanego tekstu.".
+
+        Po każdym z wyborów użytkownik ma możliwość powrotu do menu głównego albo zakończenia programu.
+
+        \begin{center}
+            \includegraphics[width=12cm]{implementacja systemu.png}
+            
+            Rysunek 1: Wizualizacja działania programu
+        \end{center}
+
+	\subsection*{Testy}
+	\hspace{0.5cm} Aby przetestować poprawność programu należy go        uruchomić i wprowadzić do konsoli odpowiedni tekst.
+
+        Na przykład, dla wpisanego tekstu "sobota rano" komputer wypisze 16*8*5*8*73**88*102, co po późniejszym porównaniu z tablicą Mendelejewa notujemy, jako poprawne.
+
+        Aby sprawdzić, czy program odpowiednio wyłapuje błędy można wpisać "12Si!". Wtedy, zgodnie z prawdą program informuje nas, że "Wprowadzono nieobsługiwane znaki" oraz, że "Nie można zaszyfrować podanego tekstu", co pokrywa się z oczekiwaniami.
+
+        Żeby sprawdzić, jak program radzi sobie z rozróżnianiem dużych i małych literek, przyjmijmy dla wpisywanego tekstu słowa "nos NOS". Program wypisze 102*16**102*16, co potwierdza poprawność jego działania.
+
+        Ostatecznie, żeby sprawdzić, co się stanie, jeśli danego tekstu nie można zaszyfrować wpiszmy słowo "algorytmion". Tak, jak było przewidziane komputer wypisał "Nie można zaszyfrować podanego tekstu", a więc wszystko działa poprawnie.
+
+
+
+	\subsection*{Pełen kod aplikacji}
+        \centering projekt.py
+\begin{lstlisting}
+elements = {
+    "H": 1, "HE": 2, "LI": 3, "BE": 4, "B": 5, "C": 6, "N": 7, "O": 8, "F": 9, "NE": 10,
+    "NA": 11, "MG": 12, "AL": 13, "SI": 14, "P": 15, "S": 16, "CL": 17, "AR": 18, "K": 19,
+    "CA": 20, "SC": 21, "TI": 22, "V": 23, "CR": 24, "MN": 25, "FE": 26, "CO": 27, "NI": 28,
+    "CU": 29, "ZN": 30, "GA": 31, "GE": 32, "AS": 33, "SE": 34, "BR": 35, "KR": 36, "RB": 37,
+    "SR": 38, "Y": 39, "ZR": 40, "NB": 41, "MO": 42, "TC": 43, "RU": 44, "RH": 45, "PD": 46,
+    "AG": 47, "CD": 48, "IN": 49, "SN": 50, "SB": 51, "TE": 52, "I": 53, "XE": 54, "CS": 55,
+    "BA": 56, "LA": 57, "CE": 58, "PR": 59, "ND": 60, "PM": 61, "SM": 62, "EU": 63, "GD": 64,
+    "TB": 65, "DY": 66, "HO": 67, "ER": 68, "TM": 69, "YB": 70, "LU": 71, "HF": 72, "TA": 73,
+    "W": 74, "RE": 75, "OS": 76, "IR": 77, "PT": 78, "AU": 79, "HG": 80, "TL": 81, "PB": 82,
+    "BI": 83, "PO": 84, "AT": 85, "RN": 86, "FR": 87, "RA": 88, "AC": 89, "TH": 90, "PA": 91,
+    "U": 92, "NP": 93, "PU": 94, "AM": 95, "CM": 96, "BK": 97, "CF": 98, "ES": 99, "FM": 100,
+    "MD": 101, "NO": 102, "LR": 103, "RF": 104, "DB": 105, "SG": 106, "BH": 107, "HS": 108,
+    "MT": 109, "DS": 110, "RG": 111, "CN": 112, "NH": 113, "FL": 114, "MC": 115, "LV": 116,
+    "TS": 117, "OG": 118
+}
+
+def mendeleev_cipher(input_text):
+    sentence = list(input_text.upper())
+    ciphered = []
+    output = ""
+    
+    i = 0
+    while i < len(sentence):
+        if sentence[i].isalpha():
+            pair = "  "
+            if i + 1 < len(sentence):
+                pair = sentence[i] + sentence[i + 1]
+
+            if pair in elements:
+                ciphered.append(str(elements[pair]))
+
+                if i + 2 == len(sentence):
+                    break
+                else:
+                    ciphered.append("*")
+                    i += 1
+            else:
+                if sentence[i] in elements:
+                    ciphered.append(str(elements[sentence[i]]))
+                    if i + 1 == len(sentence):
+                        break
+                    else:
+                        ciphered.append("*")
+                else:
+                    raise Exception()
+        elif sentence[i] == ' ':
+            ciphered.append("*")
+        else:
+            print("Wprowadzono nieobslugiwane znaki")
+            raise Exception()
+        i += 1
+
+    for element in ciphered:
+        output += element
+
+    return output
+
+def check(text):
+    try:
+        output = mendeleev_cipher(text)
+        print("Zaszyfrowany tekst:", output)
+    except Exception as e:
+        print("Nie mozna zaszyfrowac podanego tekstu")
+
+if __name__ == "__main__":
+    print("\nPodaj tekst, ktory chcesz zaszyfrowac zgodnie z szyfrem Mendelejewa - zamiast kolejnych liter, "
+          "wypisywane sa liczby atomowe pierwiastka,\n"
+          "odstep miedzy literami zastepuje symbol gwiazdki *, a odstep miedzy wyrazami dwie gwiazdki **.\n"
+          "Zaszyfrowane nie moga zostac znaki specjalne typu !,*,# ani liczby, poniewaz mogloby to wprowadzic "
+          "bledy zwiazane z odczytem zaszyfrowanego tekstu.\n")
+
+    text = input("Tekst do zaszyfrowania: ")
+    check(text)
+
+\end{lstlisting}
+\newpage
+
+\hspace{0.5cm} projekt.bat
+\begin{lstlisting}[style=batch, label=batchscript]
+@echo off
+
+echo Witaj w programie!
+
+:menu
+echo Wybierz opcje:
+echo 1 - Uruchom projekt
+echo 2 - Informacje i instrukcja obslugi
+echo 3 - Zakoncz
+
+set /p option=""
+
+if "%option%"=="1" (
+    call :run_project
+) else if "%option%"=="2" (
+    call :show_info
+) else if "%option%"=="3" (
+    echo Zakonczono program.
+    exit /b
+) else (
+    echo Nieprawidlowy wybor. Sprobuj ponownie.
+    goto menu
+)
+
+pause
+exit /b
+
+:run_project
+python projekt.py
+setlocal enabledelayedexpansion
+
+:run_project_menu
+echo Gdzie chcesz wyswietlic wynik szyfrowania?
+echo 1 - W konsoli
+echo 2 - W pliku HTML
+echo 3 - Powrot do menu glownego
+
+set /p choice=""
+
+if "%choice%"=="1" (
+    echo Wypisywanie danych z pliku output.txt:
+    type output.txt
+    goto :backing_up
+) else if "%choice%"=="2" (
+    echo Uruchamianie pliku HTML.
+    start "" "http://127.0.0.1:5500/index.html"
+    goto :backing_up
+) else if "%choice%"=="3" (
+    goto menu
+) else (
+    echo Wybor nieprawidlowy.
+    goto run_project_menu
+)
+
+endlocal
+goto :eof
+
+:backing_up
+echo 1 - Powrot do menu glownego
+echo 2 - Zakoncz program
+
+set /p choice=""
+if "%choice%"=="1" (
+    goto menu
+) else if "%choice%"=="2" (
+    echo Zakonczono program.
+    exit /b
+) else (
+    echo Nieprawidlowy wybor.
+    goto backing_up
+)
+
+:show_info
+echo Instrukcja obslugi:
+echo Podaj tekst, ktory chcesz zaszyfrowac zgodnie z szyfrem Mendelejewa - zamiast kolejnych liter,
+echo wypisywane sa liczby atomowe pierwiastka,
+echo odstep miedzy literami zastepuje symbol gwiazdki *, a odstep miedzy wyrazami dwie gwiazdki **.
+echo Zaszyfrowane nie moga zostac znaki specjalne typu !,*,# ani liczby, poniewaz mogloby to wprowadzic
+echo bledy zwiazane z odczytem zaszyfrowanego tekstu.
+echo 1 - Powrot do menu glownego
+
+set /p choice=""
+if "%choice%"=="1" (
+    goto menu
+) else (
+    echo Nieprawidlowy wybor.
+    goto show_info
+)
+
+goto :eof
+
+\end{lstlisting}
+\noindent\hrulefill
+\newpage
+index.html
+\begin{lstlisting}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="datetime" class="datetime"></div>
+    <h1>Szyfrowanie Mendelejewa </h1>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Wiadomosc przed zaszyfrowaniem</th>
+                <th>Wiadomosc zaszyfrowana</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+</html>
+\end{lstlisting}
+\newpage
+
+script.js
+\begin{lstlisting}[style=JavaScript, label=JabaScript]
+document.addEventListener("DOMContentLoaded", function() {
+    function updateTable() {
+        fetch('input.txt')
+            .then(response => response.text())
+            .then(data1 => {
+                return fetch('output.txt')
+                    .then(response => response.text())
+                    .then(data2 => {
+                        updateTableBody(data1.split('\n'), data2.split('\n'));
+                    });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        var datetimeElement = document.getElementById('datetime');
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleDateString();
+        var formattedTime = currentDate.toLocaleTimeString();
+        datetimeElement.textContent = 'Raport z dnia ' + formattedDate + ' godzina ' + formattedTime;
+    }
+
+    function updateTableBody(values1, values2) {
+        var tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = '';
+
+        for (var i = 0; i < values1.length; i++) {
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            cell1.textContent = values1[i];
+            cell2.textContent = values2[i];
+        }
+    }
+
+    updateTable();
+});
+\end{lstlisting}
+\noindent\hrulefill
+\newpage
+
+style.cc
+\begin{lstlisting}[style=CSS, label=CSS]
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #dce0e6;
+}
+
+tr:hover {
+    background-color: #dce0e679;
+}
+
+.datetime {
+    text-align: center;
+}
+\end{lstlisting}
+\noindent\hrulefill
+
+\end{document}
